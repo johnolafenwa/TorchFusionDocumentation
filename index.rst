@@ -17,8 +17,9 @@ The Official GitHub Repository of **TorchFusion** is `https://github.com/johnola
 **Installing TorchFusion**
 
 * **Install PyTorch** 0.4.1 or higher :  visit `pytorch.org <https://pytorch.org/>`_
-* **Install TorchFusion** ::  
-      pip3 install torchfusion
+**Install Torchfusion** ::
+
+    pip3 install torchfusion
 
 .. toctree::
    :maxdepth: 1
