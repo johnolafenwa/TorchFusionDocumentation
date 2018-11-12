@@ -34,8 +34,8 @@ if you are training a model to recognize cats and dogs, you should have a train 
         transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
     ])
 
-    train_loader = imagefolder_loader(transform=train_transforms,batch_size=32,root="path-to-train-folder")
-    test_loader = imagefolder_loader(transform=test_tranforms,train=False,batch_size=32,root="path-to-test-folder")
+    train_loader = imagefolder_loader(transform=train_transforms,batch_size=32,shuffle=True,root="path-to-train-folder")
+    test_loader = imagefolder_loader(transform=test_tranforms,shuffle=False,batch_size=32,root="path-to-test-folder")
 
 Data augmentation helps to improve the performance of our models, hence,  we overrided the default transformations of
 torchfusion with a new one containing our custom transforms.
@@ -142,8 +142,8 @@ The save plots,logs and models can all be found in the directory `custom-models`
         transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
     ])
 
-    train_loader = imagefolder_loader(transform=train_transforms,batch_size=32,root="path-to-train-folder")
-    test_loader = imagefolder_loader(transform=test_tranforms,train=False,batch_size=32,root="path-to-test-folder")
+    train_loader = imagefolder_loader(transform=train_transforms,batch_size=32,shuffle=True,root="path-to-train-folder")
+    test_loader = imagefolder_loader(transform=test_tranforms,shuffle=False,batch_size=32,root="path-to-test-folder")
 
     class Unit(nn.Module):
         def __init__(self,in_channels,out_channels):
