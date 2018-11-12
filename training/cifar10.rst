@@ -141,9 +141,15 @@ The save plots,logs and models can all be found in the directory `cifar10-models
         transforms.ToTensor(),
         transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
     ])
+    
+    test_transforms = transforms.Compose([
+        transforms.CenterCrop(32),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
+    ])
 
     train_loader = cifar10_loader(transform=train_transforms,batch_size=32)
-    test_loader = cifar10_loader(size=32,train=False,batch_size=32)
+    test_loader = cifar10_loader(transform=test_transforms,train=False,batch_size=32)
 
     class Unit(nn.Module):
         def __init__(self,in_channels,out_channels):
