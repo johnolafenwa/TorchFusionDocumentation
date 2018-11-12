@@ -37,9 +37,6 @@ if you are training a model to recognize cats and dogs, you should have a train 
     train_loader = imagefolder_loader(transform=train_transforms,batch_size=32,shuffle=True,root="path-to-train-folder")
     test_loader = imagefolder_loader(transform=test_tranforms,shuffle=False,batch_size=32,root="path-to-test-folder")
 
-Data augmentation helps to improve the performance of our models, hence,  we overrided the default transformations of
-torchfusion with a new one containing our custom transforms.
-
 **Define the model** ::
 
     class Unit(nn.Module):
@@ -78,13 +75,6 @@ torchfusion with a new one containing our custom transforms.
         Linear(256, 10,weight_init=Xavier_Normal())
     )
 
-To make the code more compact above, we first defined a `Unit` module that we reused in the model. Notice how we initialized
-the convolution layer with `Kaiming Normal` in the above, all torchfusion convolution layers are by default initialized
-with `Kaiming_Normal` and all Linear layers have default init of `Xavier_Normal`, however, we explicitly defined the intialization
-here to demonstrate how you can use any of the many initializers that torchfusion provides to initialize your layers.
-The `bias_init` arguement also allows you to initialize the bias as you want.
-
-
 **Define optimizer, lr scheduler and loss** ::
 
     if cuda.is_available():
@@ -99,21 +89,12 @@ The `bias_init` arguement also allows you to initialize the bias as you want.
     train_metrics = [Accuracy()]
     test_metrics = [Accuracy()]
 
-In the above, we defined a learning rate scheduler to reduce the learning rate by a factor of 10 every 30 epochs.
-There are many learning rate schedulers in pyorch's lr_scheduler package, you can use any of them here.
-
-
 **Train the model** ::
 
     learner = StandardLearner(model)
 
     if __name__ == "__main__":
         learner.train(train_loader,train_metrics=train_metrics,optimizer=optimizer,loss_fn=loss_fn,model_dir="./custom-models",test_loader=test_loader,test_metrics=test_metrics,num_epochs=200,batch_log=False,lr_scheduler=lr_scheduler,save_logs="custom-model-logs.txt",display_metrics=True,save_metrics=True)
-
-Here we specified a number of additional arguements, first we specified the `lr_scheduler` we earlier created,
-next we specified `save_logs`, this will save all logs to the file we specified, finally, `save_metrics` and `display_metrics` will
-display visualization of loss and metrics and save the generated plots.
-The save plots,logs and models can all be found in the directory `custom-models` that we specified above.
 
 **PUTTING IT ALL TOGETHER** ::
 
