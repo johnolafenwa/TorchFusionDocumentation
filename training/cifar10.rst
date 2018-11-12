@@ -40,8 +40,14 @@ To learn more visit. To learn more visit. `Cifar 10 <https://www.cs.toronto.edu/
         transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
     ])
 
+    test_transforms = transforms.Compose([
+        transforms.CenterCrop(32),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
+    ])
+
     train_loader = cifar10_loader(transform=train_transforms,batch_size=32)
-    test_loader = cifar10_loader(size=32,train=False,batch_size=32)
+    test_loader = cifar10_loader(transform=test_transforms,train=False,batch_size=32)
 
 Data augmentation helps to improve the performance of our models, hence, for the train set we overrided the default transformations of
 torchfusion with a new one containing our custom transforms. For the test set, we simply use the default transforms.
