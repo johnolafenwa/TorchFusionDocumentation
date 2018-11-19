@@ -35,7 +35,7 @@ if you are training a model to recognize cats and dogs, you should have a train 
     ])
 
     train_loader = imagefolder_loader(transform=train_transforms,batch_size=32,shuffle=True,root="path-to-train-folder")
-    test_loader = imagefolder_loader(transform=test_tranforms,shuffle=False,batch_size=32,root="path-to-test-folder")
+    test_loader = imagefolder_loader(transform=test_transforms,shuffle=False,batch_size=32,root="path-to-test-folder")
 
 **Define the model** ::
 
