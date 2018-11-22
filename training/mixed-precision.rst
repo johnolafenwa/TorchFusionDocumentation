@@ -14,16 +14,11 @@ The following are the procedures you need to follow to train torchfusion models 
 
 **Import Classes** ::
 
-    from torchfusion.layers import *
-    from torchfusion.datasets import *
-    from torchfusion.metrics import *
-    from torchfusion.initializers import Kaiming_Normal, Xavier_Normal
-    import torchvision.transforms as transforms
-    import torch.nn as nn
-    import torch.cuda as cuda
-    from torch.optim import Adam
-    from torch.optim.lr_scheduler import StepLR
-    from torchfusion.learners import StandardLearner
+    from torchfusion.fp16_utils import half_model, FP16_Optimizer
+**CONVERT MODEL AND OPTIMIZER INTO FP16** ::
+    model = half_model(model)
+    
+    
 
 
 **Load the dataset** ::
