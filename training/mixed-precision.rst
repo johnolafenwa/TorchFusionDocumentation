@@ -8,6 +8,7 @@ To learn more about mixed precision training, read
 The greatest challenge with training in mixed precision made is radical decrease in model accuracy. Hence, a naive implementation of mixed precision training will result in very poor performance. TorchFusion includes highly optimized procedures for training Deep Learning Models in mixed precision without compromising performance.
 
 **PROCEDURE**
+
 The following are the procedures you need to follow to train torchfusion models in mixed precision.
 
 
