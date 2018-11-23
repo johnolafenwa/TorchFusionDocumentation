@@ -23,7 +23,7 @@ The following are the procedures you need to follow to train torchfusion models 
     learner = StandardLearner(model)
     learner.half()
     
-    #if using lr_scheduler
+    # if using lr_scheduler
     lr_scheduler = StepLR(optimizer.optimizer,step_size=30,gamma=0.1)
     
 
