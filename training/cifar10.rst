@@ -208,8 +208,6 @@ The save plots,logs and models can all be found in the directory `cifar10-models
 
     learner = StandardLearner(model)
 
-    learner = StandardLearner(model)
-
     if __name__ == "__main__":
         learner.train(train_loader,train_metrics=train_metrics,optimizer=optimizer,loss_fn=loss_fn,model_dir="./cifar10-models",test_loader=test_loader,test_metrics=test_metrics,num_epochs=30,batch_log=False,lr_scheduler=lr_scheduler,save_logs="cifar10-logs.txt",display_metrics=True,save_metrics=True)
 
