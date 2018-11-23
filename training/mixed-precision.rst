@@ -2,7 +2,7 @@ Mixed Precision Training
 =========================
 Deep Learning models are usually trained using standard 32 bit floating point arithmetic. To speed up the training of deep learning models, a lot of research has gone into using lower bit precison arithmetic such as 8 bit and 16 bit arithmetic. The lower bits are much faster than the 32 bit precision arithmetic. NVIDIA Volta GPUs have tensor cores specialized for 16 bit precison arithmetic, taking advantage of them could lead to significant speed up in training of large deep learning models.
 
-To learn more about mixed precision training, read 
+To learn more about mixed precision training, read `NVIDIA MIXED PRECISION <hhttps://docs.nvidia.com/deeplearning/sdk/mixed-precision-training/index.html>/>`_
 `Nvidia Mixed Precision Training <hhttps://docs.nvidia.com/deeplearning/sdk/mixed-precision-training/index.html>/>`_
 
 The greatest challenge with training in mixed precision made is radical decrease in model accuracy. Hence, a naive implementation of mixed precision training will result in very poor performance. TorchFusion includes highly optimized procedures for training Deep Learning Models in mixed precision without compromising performance.
