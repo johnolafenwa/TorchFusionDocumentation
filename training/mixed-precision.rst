@@ -15,8 +15,14 @@ The following are the procedures you need to follow to train torchfusion models 
 **Import Classes** ::
 
     from torchfusion.fp16_utils import half_model, FP16_Optimizer
+    
 **CONVERT MODEL AND OPTIMIZER INTO FP16** ::
+
     model = half_model(model)
+    optimizer = FP16_Optimizer(Adam(model.parameters()))
+    learner = StandardLearner(model)
+    learner.half()
+    
     
     
 
