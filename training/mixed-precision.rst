@@ -97,10 +97,11 @@ The following are the procedures you need to follow to train torchfusion models 
 
     if cuda.is_available():
         model = model.cuda()
+    model = half_model(model)
     
-    optimizer = Adam(model.parameters(),lr=0.001)
+    optimizer = FP16_Optimizer(Adam(model.parameters(),lr=0.001))
 
-    lr_scheduler = StepLR(optimizer,step_size=30,gamma=0.1)
+    lr_scheduler = StepLR(optimizer.optimizer,step_size=30,gamma=0.1)
 
     loss_fn = nn.CrossEntropyLoss()
 
@@ -108,8 +109,7 @@ The following are the procedures you need to follow to train torchfusion models 
     test_metrics = [Accuracy()]
 
     learner = StandardLearner(model)
-
-    learner = StandardLearner(model)
+    learner.half()
 
     if __name__ == "__main__":
         learner.train(train_loader,train_metrics=train_metrics,optimizer=optimizer,loss_fn=loss_fn,model_dir="./cifar10-models",test_loader=test_loader,test_metrics=test_metrics,num_epochs=30,batch_log=False,lr_scheduler=lr_scheduler,save_logs="cifar10-logs.txt",display_metrics=True,save_metrics=True)
