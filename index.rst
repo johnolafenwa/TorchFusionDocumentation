@@ -27,6 +27,7 @@ The Official GitHub Repository of **TorchFusion** is `https://github.com/johnola
 
    training/hello
    training/cifar10
+   training/mixed-precision
    training/custom-datasets
    training/logging
    training/custom-trainer
